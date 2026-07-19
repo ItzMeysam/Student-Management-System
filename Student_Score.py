@@ -222,6 +222,7 @@ def edit_student(students, name):
 
 
 def main():
+    print("Welcome!")
     students = load_students_from_file()
     while True:
         show_menu()
