@@ -1,0 +1,9 @@
+# PyCharm Settings
+.idea/
+
+# Python Cache
+__pycache__/
+*.pyc
+
+# Local Data (Optional - if you don't want to track student data on GitHub)
+students.json
