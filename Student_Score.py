@@ -179,11 +179,15 @@ def delete_student_by_name(students, name):
 
 def handle_delete_student(students):
     delete_name = input("\nEnter student name to delete: ").strip()
-    deleted = delete_student_by_name(students, delete_name)
+    student = find_student_by_name(students, delete_name)
 
-    if deleted:
-        save_students_to_file(students)
-        print("Student deleted successfully.")
+    if student:
+        confirm = input(f"Are you sure you want to delete {student['name']}? (y/n): ").strip().lower()
+        if confirm == "y":
+            delete_student_by_name(students, delete_name)
+            save_students_to_file(students)
+            print("Student deleted successfully.")
+        print("Deletion Cancelled")
     else:
         print("Student not found.")
 
