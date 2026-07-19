@@ -1,6 +1,8 @@
 # PyCharm Settings
 .idea/
 
+main.py
+
 # Python Cache
 __pycache__/
 *.pyc
