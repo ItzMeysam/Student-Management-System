@@ -4,7 +4,11 @@ from logic import (
     find_student_by_name,
     delete_student_by_name,
     is_duplicate_name,
-    create_student
+    create_student,
+    get_high_score_students,
+    get_failed_students,
+    get_class_summary,
+    get_lowest_score
 )
 from storage import save_students_to_file
 
@@ -92,6 +96,7 @@ def student_score():
 
 
 def display_student(student):
+    print("-" * 20)
     print(f"Name: {student['name']}")
     print(f"Scores: {student['scores']}")
     print(f"Count: {len(student['scores'])}")
@@ -117,4 +122,53 @@ def show_menu():
     print("5. Search student")
     print("6. Edit student")
     print("7. Delete student")
-    print("8. Exit")
+    print("8. Student logs")
+    print("9. Exit")
+
+
+def show_student_list(students):
+    if not students:
+        print("No students found.")
+        return
+    for student in students:
+        display_student(student)
+
+
+def student_logs(students):
+    while True:
+        print("\n" + "-" * 20)
+        print("1. Top students")
+        print("2. Failed students")
+        print("3. Class summary (A, B, C)")
+        print("4. Lowest score")
+        print("5. Back to main menu")
+        print("-" * 20)
+
+        choice = input("Please choose a number: ").strip()
+        if choice == "1":
+            high_score_students = get_high_score_students(students, threshold=15)
+            show_student_list(high_score_students)
+
+        elif choice == "2":
+            failed_students = get_failed_students(students)
+            show_student_list(failed_students)
+
+        elif choice == "3":
+            a_count, b_count, c_count = get_class_summary(students)
+            print(f"A Students: {a_count}\n")
+            print(f"B Students: {b_count}\n")
+            print(f"C Students: {c_count}")
+
+        elif choice == "4":
+            lowest_score = get_lowest_score(students)
+
+            if lowest_score is None:
+                print("No scores found")
+            else:
+                print(f"Lowest score: {lowest_score}")
+
+        elif choice == "5":
+            break
+
+        else:
+            print("Invalid choice. Please try again.")

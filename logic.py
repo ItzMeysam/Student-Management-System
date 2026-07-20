@@ -58,8 +58,38 @@ def delete_student_by_name(students, name):
 
 
 def is_duplicate_name(students, name):
-    target_name = name.strip().lower()
+    return any(student["name"].strip().lower() == name.strip().lower() for student in students)
+
+
+def get_high_score_students(students, threshold=15):
+    return [student for student in students if all(score >= threshold for score in student["scores"])]
+
+
+def get_failed_students(students):
+    return [student for student in students if student["status"] == "Failed"]
+
+
+def get_class_summary(students):
+    a_count = 0
+    b_count = 0
+    c_count = 0
     for student in students:
-        if student["name"].strip().lower() == target_name:
-            return True
-    return False
+        if student["average"] >= 17:
+            a_count += 1
+        elif student["average"] >= 10:
+            b_count += 1
+        else:
+            c_count += 1
+    return a_count, b_count, c_count
+
+
+def get_lowest_score(students):
+    all_scores = []
+
+    for student in students:
+        all_scores.extend(student["scores"])
+
+    if not all_scores:
+        return None
+
+    return min(all_scores)
