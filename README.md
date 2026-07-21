@@ -19,11 +19,11 @@ A clean and modular Python application designed to manage student records using 
 ## How to Run
 
 1. Make sure you have Python installed.
-2. Clone this repository or download `main.py`.
+2. Clone this repository or download `student_management_system.py`.
 3. Run the application:
 
 ```bash
-python main.py
+python student_management_system.py
 ```
 
 ## Sample Interface
@@ -51,5 +51,6 @@ Lowest score: 17.0
 ## Future Improvements
 
 - Implement JSON file persistence to save data permanently.
+- Add unique student IDs to prevent conflicts during removal/search.
 - Add functionality to edit existing student records.
 - Modularize the project into multiple files for better scalability.
