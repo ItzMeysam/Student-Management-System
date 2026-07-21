@@ -1,56 +1,44 @@
 # Student Management System (CLI)
 
-A clean and modular Python application designed to manage student records using Object-Oriented Programming (OOP) principles. This system allows for adding, searching, removing, and analyzing student academic performance through a Command Line Interface.
+A modular, Object-Oriented Python application designed to manage student records, track academic scores, calculate statistics, and persist data using JSON files.
 
-## Key Features
+## Features
 
-- **OOP Architecture:** Organized into `Student` and `StudentManager` classes for better maintainability.
-- **Academic Metrics:** Automatic calculation of average scores, highest/lowest grades, and letter-based status (A, B, C).
-- **Advanced Search & Filtering:** Case-insensitive search and filtering for failing students.
-- **Robust Input Validation:** Uses `try-except` blocks to handle invalid numeric inputs and ensures scores remain within the 0-20 range.
-- **Standardized Output:** Implements the `__str__` magic method for clean and consistent student data representation.
+- **Object-Oriented Programming (OOP):** Built using distinct classes for `Student` and `StudentManager` models to enforce encapsulation and separation of concerns.
+- **Modular Architecture:** The codebase is split into reusable modules (`student.py`, `manager.py`, and `main.py`) for clean code practices.
+- **Data Persistence:** Automatically saves and loads student profiles to/from a local `students.json` file.
+- **Unique Identifier (ID) System:** Generates random, non-repeating 4-digit IDs for each student to prevent identity conflicts (e.g., handling students with identical names).
+- **Academic Performance Analysis:** Calculates averages, grades students (A, B, C), and extracts highest, lowest, and failing scores.
+- **Robust Error Handling:** Validates user inputs (numeric check, range checks for scores between 0 and 20) and handles potential file IO / JSON parsing errors gracefully.
 
-## Technical Highlights
+## Project Structure
 
-- **Static Methods:** Efficient use of `@staticmethod` for utility functions like `display_students`.
-- **List Comprehensions:** Used for optimized student removal logic.
-- **Error Handling:** Prevention of crashes from empty names, negative counts, or invalid score types.
+- `main.py`: Application entry point and CLI menu loop.
+- `manager.py`: Handles student collection operations (add, remove, search, JSON I/O).
+- `student.py`: Student class representation and statistical calculations.
+- `students.json`: Persistent JSON data storage (auto-generated).
 
-## How to Run
+## Getting Started
 
-1. Make sure you have Python installed.
-2. Clone this repository or download `student_management_system.py`.
+### Prerequisites
+- Python 3.x installed on your system.
+- Git (optional, for cloning the repository).
+
+### Installation & Execution
+1. Clone this repository to your local machine:
+   git clone <YOUR_REPOSITORY_URL>
+
+2. Navigate to the project directory:
+   cd pythonProject2
+
 3. Run the application:
+   python main.py
 
-```bash
-python student_management_system.py
-```
-
-## Sample Interface
-
-```text
-=== Student Manager ===
-1. Add Student
-2. Show All Students
-3. Find Student
-4. Remove Student
-5. Show Failing Students
-6. Exit
-Enter your choice: 2
-
-Name: Ali
-Scores: [18.0, 19.5, 17.0]
-Number of scores: 3
-Average: 18.17
-Status: A
-Highest score: 19.5
-Lowest score: 17.0
---------------------
-```
-
-## Future Improvements
-
-- Implement JSON file persistence to save data permanently.
-- Add unique student IDs to prevent conflicts during removal/search.
-- Add functionality to edit existing student records.
-- Modularize the project into multiple files for better scalability.
+## How to Use
+Upon execution, a menu will prompt you with the following choices:
+1. **Add Student:** Enter student name and input their scores. The system generates a unique 4-digit ID automatically.
+2. **Show All Students:** Display all registered students with their ID, name, list of scores, average, status grade, and min/max scores.
+3. **Find Student:** Search for students by name.
+4. **Remove Student:** Delete a student profile. If duplicate names exist, the system will prompt you for the specific 4-digit ID to ensure precise removal.
+5. **Show Failing Students:** Filters and displays students with an average score below 10 (Status C).
+6. **Exit:** Safely exit the application.
