@@ -1,20 +1,13 @@
-<<<<<<< HEAD
 # PyCharm Settings
 .idea/
-
-main.py
+.venv/
+venv/
 
 # Python Cache
 __pycache__/
 *.pyc
 
-# Local Data (Optional - if you don't want to track student data on GitHub)
+# Local Data (optional)
 students.json
-=======
-__pycache__/
-*.pyc
-.idea/
-.venv/
-.env
 data.json
->>>>>>> a6736bf (Add .gitignore to keep the repo clean)
+.env
